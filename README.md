@@ -36,7 +36,7 @@
 
 ### 方式一：直接下载可执行文件
 
-到 [Releases](../../releases) 下载 `ScreenQRScanner.zip`，解压后双击 `屏幕二维码扫描器.exe`。
+到 [Releases](../../releases) 下载 `ScreenQRScanner.zip`，解压后双击里面的 `ScreenQRScanner.exe`。
 免安装、免 Python 环境。注意 `_internal` 文件夹要和 exe 放在一起。
 
 ### 方式二：从源码运行
