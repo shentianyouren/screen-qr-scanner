@@ -29,11 +29,20 @@ jobs:
             --add-data "$env:GITHUB_WORKSPACE\assets\icon.ico;assets" `
             --distpath dist --workpath build qr_scanner.py
 
+      - name: Build portable single-file exe
+        run: |
+          python -m PyInstaller --noconfirm --onefile --windowed --name ScreenQRScanner-portable `
+            --icon "$env:GITHUB_WORKSPACE\assets\icon.ico" `
+            --add-data "$env:GITHUB_WORKSPACE\assets\icon.ico;assets" `
+            --distpath dist --workpath build_portable qr_scanner.py
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ScreenQRScanner-windows
-          path: dist/ScreenQRScanner
+          path: |
+            dist/ScreenQRScanner
+            dist/ScreenQRScanner-portable.exe
 
       - name: Zip for release
         if: startsWith(github.ref, 'refs/tags/')
@@ -43,4 +52,15 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: ScreenQRScanner.zip
+          files: |
+            ScreenQRScanner.zip
+            dist/ScreenQRScanner-portable.exe
+          body: |
+            ## 下载哪个？
+
+            | 文件 | 说明 |
+            | --- | --- |
+            | `ScreenQRScanner-portable.exe` | **推荐**。单文件免安装，下载后双击即用，无需解压 |
+            | `ScreenQRScanner.zip` | 解压后用 `ScreenQRScanner.exe`，启动更快（需保持 `_internal` 同目录） |
+
+            两种都是纯本地运行，不联网、不上传图片。

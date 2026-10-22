@@ -36,8 +36,14 @@
 
 ### 方式一：直接下载可执行文件
 
-到 [Releases](../../releases) 下载 `ScreenQRScanner.zip`，解压后双击里面的 `ScreenQRScanner.exe`。
-免安装、免 Python 环境。注意 `_internal` 文件夹要和 exe 放在一起。
+到 [Releases](../../releases) 下载，两种形态任选：
+
+| 文件 | 说明 |
+| --- | --- |
+| `ScreenQRScanner-portable.exe` | **推荐**。单文件免安装，下载后双击即用，不用解压 |
+| `ScreenQRScanner.zip` | 解压后双击 `ScreenQRScanner.exe`，启动更快。`_internal` 文件夹必须和 exe 放在同一目录 |
+
+都是免 Python 环境的绿色版，杀掉进程即彻底卸载。
 
 ### 方式二：从源码运行
 
