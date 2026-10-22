@@ -11,8 +11,11 @@ env/
 # PyInstaller
 build/
 dist/
+build*/
+dist*/
 *.spec
 *.manifest
+ScreenQRScanner.zip
 
 # 运行产物
 *.log

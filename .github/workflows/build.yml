@@ -22,11 +22,12 @@ jobs:
         run: pip install -r requirements.txt pyinstaller
 
       - name: Build exe
+        # 注意：不要加 --specpath，否则 --icon / --add-data 会按 spec 目录解析相对路径而找不到文件
         run: |
-          pyinstaller --noconfirm --windowed --name ScreenQRScanner `
-            --icon assets/icon.ico `
-            --add-data "assets/icon.ico;assets" `
-            --distpath dist --workpath build --specpath build qr_scanner.py
+          python -m PyInstaller --noconfirm --windowed --name ScreenQRScanner `
+            --icon "$env:GITHUB_WORKSPACE\assets\icon.ico" `
+            --add-data "$env:GITHUB_WORKSPACE\assets\icon.ico;assets" `
+            --distpath dist --workpath build qr_scanner.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
